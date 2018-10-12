@@ -3,7 +3,11 @@
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
             <div class="widget am-cf">
                 <div class="widget-head am-cf">
-                    <div class="widget-title am-cf">帮助中心</div>
+                    <div class="widget-title am-cf">
+                        <?php if ($type==1):?>帮助中心
+                        <?php else:?>关于我们
+                        <?php endif;?>
+                    </div>
                 </div>
                 <div class="widget-body am-fr">
                     <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
@@ -11,7 +15,7 @@
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <a class="am-btn am-btn-default am-btn-success am-radius"
-                                       href="<?= url('wxapp.help/add') ?>">
+                                       href="<?= url('wxapp.help/add?type='.$type) ?>">
                                         <span class="am-icon-plus"></span> 新增
                                     </a>
                                 </div>

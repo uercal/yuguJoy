@@ -6,7 +6,7 @@
                     <div class="widget-body">
                         <fieldset>
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">添加帮助</div>
+                                <div class="widget-title am-fl">添加</div>
                             </div>
                             <div class="am-form-group">
                                 <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">标题 </label>
@@ -28,7 +28,7 @@
                                            value="100" required>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="help[type]" value="<?php echo $type ?>">
                             <div class="am-form-group">
                                 <div class="am-u-sm-9 am-u-sm-push-3 am-margin-top-lg">
                                     <button type="submit" class="j-submit am-btn am-btn-secondary">提交

@@ -18,9 +18,9 @@ class WxappHelp extends BaseModel
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function getList()
-    {
-        return $this->order(['sort' => 'asc'])->select();
+    public function getList($type)
+    {        
+        return $this->where(['type'=>$type])->order(['sort' => 'asc'])->select();
     }
 
     /**

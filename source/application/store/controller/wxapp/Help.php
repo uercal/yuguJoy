@@ -21,9 +21,10 @@ class Help extends Controller
      */
     public function index()
     {
+        $type = input('type');
         $model = new WxappHelpModel;
-        $list = $model->getList();
-        return $this->fetch('index', compact('list'));
+        $list = $model->getList($type);
+        return $this->fetch('index', compact(['list','type']));
     }
 
     /**
@@ -34,11 +35,13 @@ class Help extends Controller
     {
         $model = new WxappHelpModel;
         if (!$this->request->isAjax()) {
-            return $this->fetch('add', compact('list'));
-        }
-        // 新增记录
+            $type = input('type');                        
+            return $this->fetch('add', compact(['list','type']));
+        }        
+        // 新增记录        
         if ($model->add($this->postData('help'))) {
-            return $this->renderSuccess('添加成功', url('wxapp.help/index'));
+            $data = $this->postData('help');
+            return $this->renderSuccess('添加成功', url('wxapp.help/index?type='.$data['type']));
         }
         $error = $model->getError() ?: '添加失败';
         return $this->renderError($error);

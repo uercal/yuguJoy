@@ -33,8 +33,9 @@ class Wxapp extends Controller
      */
     public function help()
     {
+        $type = input('type');
         $model = new WxappHelp;
-        $list = $model->getList();
+        $list = $model->getList($type);
         return $this->renderSuccess(compact('list'));
     }
 

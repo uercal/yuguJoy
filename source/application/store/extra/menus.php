@@ -107,10 +107,20 @@ return [
             ],
             [
                 'name' => '帮助中心',
-                'index' => 'wxapp.help/index',
+                'index' => 'wxapp.help/index?type=1',
                 'urls' => [
                     'wxapp.help/index',
-                    'wxapp.help/add',
+                    'wxapp.help/add?type=1',
+                    'wxapp.help/edit',
+                    'wxapp.help/delete'
+                ]
+            ],
+            [
+                'name' => '关于我们',
+                'index' => 'wxapp.help/index?type=2',
+                'urls' => [
+                    'wxapp.help/index',
+                    'wxapp.help/add?type=2',
                     'wxapp.help/edit',
                     'wxapp.help/delete'
                 ]
