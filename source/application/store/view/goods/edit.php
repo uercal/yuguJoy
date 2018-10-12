@@ -133,24 +133,7 @@
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">其他</div>
                             </div>
-                            <div class="am-form-group">
-                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">运费模板 </label>
-                                <div class="am-u-sm-9 am-u-end">
-                                    <select name="goods[delivery_id]" required
-                                            data-am-selected="{searchBox: 1, btnSize: 'sm',  placeholder:'请选择运费模板'}">
-                                        <option value="">请选择运费模板</option>
-                                        <?php foreach ($delivery as $item): ?>
-                                            <option value="<?= $item['delivery_id'] ?>"
-                                                <?= $model['delivery_id'] === $item['delivery_id'] ? 'selected' : '' ?>>
-                                                <?= $item['name'] ?> (<?= $item['method']['text'] ?>)
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <small class="am-margin-left-xs">
-                                        <a href="<?= url('setting.delivery/add') ?>">去添加</a>
-                                    </small>
-                                </div>
-                            </div>
+                            
                             <div class="am-form-group">
                                 <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">商品状态 </label>
                                 <div class="am-u-sm-9 am-u-end">

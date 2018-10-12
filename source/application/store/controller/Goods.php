@@ -21,7 +21,7 @@ class Goods extends Controller
     public function index()
     {
         $model = new GoodsModel;
-        $list = $model->getList();
+        $list = $model->getList();        
         return $this->fetch('index', compact('list'));
     }
 

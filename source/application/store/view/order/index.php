@@ -54,6 +54,7 @@
                                                 <p class="am-link-muted">(含运费：￥<?= $order['express_price'] ?>)</p>
                                             </td>
                                             <td class="am-text-middle" rowspan="<?= $goodsCount ?>">
+                                                <p><img src="<?= $order['user']['avatarUrl']?>" style="width:50px;"></p>
                                                 <p><?= $order['user']['nickName'] ?></p>
                                                 <p class="am-link-muted">(用户id：<?= $order['user']['user_id'] ?>)</p>
                                             </td>
