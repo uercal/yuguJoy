@@ -118,7 +118,7 @@ class Order extends BaseModel
      */
     public static function detail($order_id)
     {
-        return self::get($order_id, ['goods.image', 'address']);
+        return self::get($order_id, ['goods.image', 'address','expressFile']);
     }
 
 }

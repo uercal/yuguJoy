@@ -259,7 +259,9 @@
                                     </tr>
                                     <tr>
                                         <td><?= $detail['express_url'] ?></td>
-                                        <td><?= $detail['express_file_id'] ?></td>
+                                        <td>
+                                            <img src="<?= $detail['express_file']['file_path'] ?>" style="width:100px;" alt="">                                            
+                                        </td>
                                         <td>
                                              <span class="am-badge
                                             <?= $detail['delivery_status']['value'] === 20 ? 'am-badge-success' : '' ?>">
