@@ -51,6 +51,13 @@ class Order extends BaseModel
         return $this->belongsTo('User');
     }
 
+
+    // 关联物品表
+    public function expressFile(){
+        return $this->hasOne('upload_file','file_id','express_file_id');
+    }
+
+
     /**
      * 付款状态
      * @param $value

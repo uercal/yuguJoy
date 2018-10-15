@@ -38,10 +38,10 @@ class Order extends OrderModel
             || $this['delivery_status']['value'] === 20) {
             $this->error = '该订单不合法';
             return false;
-        }
+        }        
         return $this->save([
-            'express_company' => $data['express_company'],
-            'express_no' => $data['express_no'],
+            'express_url' => $data['express_url'],
+            'express_file_id' => $data['express_file_id'],
             'delivery_status' => 20,
             'delivery_time' => time(),
         ]);

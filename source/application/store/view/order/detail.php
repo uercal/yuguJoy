@@ -135,7 +135,7 @@
                         </table>
                     </div>
 
-                    <div class="widget-head am-cf">
+                    <!-- <div class="widget-head am-cf">
                         <div class="widget-title am-fl">收货信息</div>
                     </div>
                     <div class="am-scrollable-horizontal">
@@ -159,7 +159,7 @@
                             </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
 
                     <?php if ($detail['pay_status']['value'] === 20): ?>
                         <div class="widget-head am-cf">
@@ -204,19 +204,40 @@
                             <form id="delivery" class="my-form am-form tpl-form-line-form" method="post"
                                   action="<?= url('order/delivery', ['order_id' => $detail['order_id']]) ?>">
                                 <div class="am-form-group">
-                                    <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">物流公司名称 </label>
+                                    <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">模板链接 </label>
                                     <div class="am-u-sm-9 am-u-end">
-                                        <input type="text" class="tpl-form-input" name="order[express_company]"
+                                        <input type="text" class="tpl-form-input" name="order[express_url]"
                                                required>
-                                        <small>如：顺丰速运、申通快递</small>
+                                        <small>如：http://xxxxxxxxxx/xxxxx</small>
                                     </div>
                                 </div>
                                 <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">模板二维码图片 </label>
+                                    <div class="am-u-sm-9 am-u-end">
+                                        <div class="am-form-file">
+                                            <div class="am-form-file">
+                                                <button type="button"
+                                                        class="upload-file am-btn am-btn-secondary am-radius">
+                                                    <i class="am-icon-cloud-upload"></i> 选择图片
+                                                </button>
+                                                <div class="uploader-list am-cf">
+                                                </div>
+                                            </div>
+                                            <div class="help-block am-margin-top-sm">
+                                                <small>尺寸750x750像素以上，大小2M以下 (可拖拽图片调整显示顺序 )</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- <div class="am-form-group">
                                     <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">物流单号 </label>
                                     <div class="am-u-sm-9 am-u-end">
                                         <input type="text" class="tpl-form-input" name="order[express_no]" required>
                                     </div>
-                                </div>
+                                </div> -->
+
+
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3 am-margin-top-lg">
                                         <button type="submit" class="j-submit am-btn am-btn-sm am-btn-secondary">
@@ -231,14 +252,14 @@
                                 am-text-nowrap am-margin-bottom-xs">
                                     <tbody>
                                     <tr>
-                                        <th>物流公司</th>
-                                        <th>物流单号</th>
+                                        <th>模板地址</th>
+                                        <th>模板二维码</th>
                                         <th>发货状态</th>
                                         <th>发货时间</th>
                                     </tr>
                                     <tr>
-                                        <td><?= $detail['express_company'] ?></td>
-                                        <td><?= $detail['express_no'] ?></td>
+                                        <td><?= $detail['express_url'] ?></td>
+                                        <td><?= $detail['express_file_id'] ?></td>
                                         <td>
                                              <span class="am-badge
                                             <?= $detail['delivery_status']['value'] === 20 ? 'am-badge-success' : '' ?>">
@@ -258,6 +279,15 @@
         </div>
     </div>
 </div>
+<!-- 图片文件列表模板 -->
+{{include file="layouts/_template/tpl_file_item" /}}
+
+<!-- 文件库弹窗 -->
+{{include file="layouts/_template/file_library" /}}
+
+
+<script src="assets/store/js/ddsort.js"></script>
+
 <script>
     $(function () {
 
@@ -266,6 +296,24 @@
          * @type {*}
          */
         $('.my-form').superForm();
+        
+
+        // 选择图片
+        $('.upload-file').selectImages({
+            name: 'order[express_file_id]'
+            , multiple: false
+        });
+
+        // 图片列表拖动
+        $('.uploader-list').DDSort({
+            target: '.file-item',
+            delay: 100, // 延时处理，默认为 50 ms，防止手抖点击 A 链接无效
+            floatStyle: {
+                'border': '1px solid #ccc',
+                'background-color': '#fff'
+            }
+        });
+
 
     });
 </script>

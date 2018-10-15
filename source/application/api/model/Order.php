@@ -272,9 +272,9 @@ class Order extends OrderModel
             'order_id' => $order_id,
             'user_id' => $user_id,
             'order_status' => ['<>', 20]
-        ], ['goods' => ['image', 'spec', 'goods'], 'address'])) {
+        ], ['goods' => ['image', 'spec', 'goods'], 'address','expressFile'])) {
             throw new BaseException(['msg' => '订单不存在']);
-        }
+        }        
         return $order;
     }
 
