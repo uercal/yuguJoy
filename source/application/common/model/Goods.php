@@ -112,8 +112,8 @@ class Goods extends BaseModel
                 'goods_spec_id' => $item['goods_spec_id'],
                 'spec_sku_id' => $item['spec_sku_id'],
                 'rows' => [],
-                'form' => [                    
-                    'goods_price' => $item['goods_price'],                                        
+                'form' => [
+                    'goods_price' => $item['goods_price'],
                     'stock_num' => $item['stock_num'],
                 ],
             ];
@@ -157,7 +157,8 @@ class Goods extends BaseModel
         $maxPriceSql = $GoodsSpec->field(['MAX(goods_price)'])
             ->where('goods_id', 'EXP', "= `$tableName`.`goods_id`")->buildSql();
         // 执行查询
-        $list = $this->field(['*', '(sales_initial + sales_actual) as goods_sales',
+        $list = $this->field([
+            '*', '(sales_initial + sales_actual) as goods_sales',
             "$minPriceSql AS goods_min_price",
             "$maxPriceSql AS goods_max_price"
         ])->with(['category', 'image.file', 'spec'])
@@ -213,5 +214,17 @@ class Goods extends BaseModel
             ->order(['goods_id' => 'desc', 'goods_sort' => 'asc'])
             ->select();
     }
-   
+
+    // 获取具体id集合列表
+    public function getIdsList($ids)
+    {
+        return $this->with(['spec', 'category', 'image.file'])
+            ->whereIn('goods_id',$ids)
+            ->where('is_delete', '=', 0)
+            ->where('goods_status', '=', 10)
+            ->order(['goods_id' => 'desc', 'goods_sort' => 'asc'])
+            ->select()
+            ->toArray();
+    }
+
 }

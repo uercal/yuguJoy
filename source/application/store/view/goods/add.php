@@ -58,6 +58,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">预览地址(带https://或http://) </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name="goods[pre_view_path]"
+                                           value="" required>
+                                </div>
+                            </div>
 
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">规格/库存</div>

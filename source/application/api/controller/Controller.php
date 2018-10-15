@@ -5,6 +5,7 @@ namespace app\api\controller;
 use app\api\model\User as UserModel;
 use app\common\exception\BaseException;
 use think\Controller as ThinkController;
+use function Qiniu\json_decode;
 
 /**
  * API控制器基类
@@ -55,7 +56,9 @@ class Controller extends ThinkController
         }
         if (!$user = UserModel::getUser($token)) {
             throw new BaseException(['code' => -1, 'msg' => '没有找到用户信息']);
-        }
+        }        
+        $favorite_goods_ids = \think\Db::name('user_favorite')->where('user_id',$user['user_id'])->value('favorite_goods_ids');        
+        $user['favorite_goods_ids'] = json_decode($favorite_goods_ids,true);
         return $user;
     }
 

@@ -45,7 +45,16 @@
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">商品图片 </label>
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">预览地址 </label>
+                                <div class="am-u-sm-9 am-u-end">
+                                    <input type="text" class="tpl-form-input" name="goods[pre_view_path]"
+                                           value="<?= $model['pre_view_path'] ?>" required>
+                                </div>
+                            </div>
+
+                            <!-- 预览地址 -->
+                            <div class="am-form-group">
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label form-require">预览地址 </label>
                                 <div class="am-u-sm-9 am-u-end">
                                     <div class="am-form-file">
                                         <button type="button"
@@ -69,6 +78,7 @@
                                 </div>
                             </div>
 
+                            <!--  -->
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">规格/库存</div>
                             </div>

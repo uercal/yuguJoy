@@ -3,11 +3,13 @@
 namespace app\api\model;
 
 use app\common\model\User as UserModel;
+use app\api\model\Goods as GoodsModel;
 //use app\api\model\Wxapp;
 use app\common\library\wechat\WxUser;
 use app\common\exception\BaseException;
 use think\Cache;
 use think\Request;
+use think\Db;
 
 /**
  * 用户模型类
@@ -120,4 +122,32 @@ class User extends UserModel
         return $user['user_id'];
     }
 
+
+    // 添加收藏
+    public function doFavorite($input){
+        $user_id = $input['user_id'];
+        $favorite_goods_ids = explode(',',$input['favorite_goods_ids']);
+        $favorite_goods_ids = json_encode($favorite_goods_ids);
+        $obj = Db::name('user_favorite')->where('user_id',$user_id)->find();
+        if(!$obj){
+            $res = Db::name('user_favorite')->insert([
+                'user_id'=>$user_id,
+                'favorite_goods_ids'=>$favorite_goods_ids
+            ]);
+        }else{
+            $res = Db::name('user_favorite')->where('user_id',$user_id)->update([
+                'favorite_goods_ids'=>$favorite_goods_ids
+            ]);
+        }
+        return $res;        
+    }
+
+    // 获取收藏
+    public function getFavorite($user_id){
+        $ids = Db::name('user_favorite')->where('user_id',$user_id)->value('favorite_goods_ids');
+        $ids = json_decode($ids,true);
+        $model = new GoodsModel;
+        $list = $model->getIdsList($ids);        
+        return $list;
+    }
 }
