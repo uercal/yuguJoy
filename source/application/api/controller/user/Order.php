@@ -107,8 +107,9 @@ class Order extends Controller
         // 发起微信支付
         $wxConfig = WxappModel::getWxappCache();
         $WxPay = new WxPay($wxConfig);
-        $wxParams = $WxPay->unifiedorder($order['order_no'], $this->user['open_id'], $order['pay_price']);
+        $wxParams = $WxPay->unifiedorder($order['order_no'], $this->user['open_id'], $order['pay_price']);        
         return $this->renderSuccess($wxParams);
     }
+    
 
 }

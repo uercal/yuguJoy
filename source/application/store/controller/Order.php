@@ -114,6 +114,7 @@ class Order extends Controller
     {
         $model = OrderModel::detail($order_id);
         if ($model->delivery($this->postData('order'))) {
+            
             return $this->renderSuccess('发货成功');
         }
         $error = $model->getError() ?: '发货失败';
