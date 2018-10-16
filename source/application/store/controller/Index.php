@@ -23,7 +23,7 @@ class Index extends Controller
 
     public function preView(Request $request){
         $path = input('path');      
-        $str = "Location: ".$path;
-        header($str); exit;        
+        $this->assign('path',$path);
+        return $this->fetch('pre-view');
     }
 }
