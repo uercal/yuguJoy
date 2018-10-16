@@ -165,6 +165,12 @@ class Order extends OrderModel
                 $filter['delivery_status'] = 20;
                 $filter['receipt_status'] = 10;
                 break;
+            case 'done';
+                $filter['pay_status'] = 20;
+                $filter['delivery_status'] = 20;
+                $filter['receipt_status'] = 20;
+                break;
+
         }
         return $this->with(['goods.image'])
             ->where('user_id', '=', $user_id)
@@ -246,10 +252,20 @@ class Order extends OrderModel
             case 'payment';
                 $filter['pay_status'] = 10;
                 break;
+            case 'delivery';
+                $filter['pay_status'] = 20;
+                $filter['delivery_status'] = 10;
+                $filter['receipt_status'] = 10;
+                break;
             case 'received';
                 $filter['pay_status'] = 20;
                 $filter['delivery_status'] = 20;
                 $filter['receipt_status'] = 10;
+                break;
+            case 'done';
+                $filter['pay_status'] = 20;
+                $filter['delivery_status'] = 20;
+                $filter['receipt_status'] = 20;
                 break;
         }
         return $this->where('user_id', '=', $user_id)

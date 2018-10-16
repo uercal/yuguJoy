@@ -27,8 +27,10 @@ class Index extends Controller
         $orderCount = [
             'payment' => $model->getCount($userInfo['user_id'], 'payment'),
             'received' => $model->getCount($userInfo['user_id'], 'received'),
+            'delivery' => $model->getCount($userInfo['user_id'], 'delivery'),
+            'done' => $model->getCount($userInfo['user_id'], 'done')
         ];
-        return $this->renderSuccess(compact('userInfo', 'orderCount'));
+        return $this->renderSuccess(compact('userInfo', 'orderCount','delivery','done'));
     }
 
 }
