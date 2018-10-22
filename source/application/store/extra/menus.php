@@ -44,17 +44,17 @@ return [
         'index' => 'order/delivery_list',
         'submenu' => [
             [
+                'name' => '待付款',
+                'index' => 'order/pay_list',
+            ],
+            [
                 'name' => '待受理',
                 'index' => 'order/delivery_list',
             ],
             [
                 'name' => '已受理',
                 'index' => 'order/receipt_list',
-            ],
-            [
-                'name' => '待付款',
-                'index' => 'order/pay_list',
-            ],
+            ],            
             [
                 'name' => '已完成',
                 'index' => 'order/complete_list',
