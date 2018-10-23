@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
                                         <div class="help-block am-margin-top-sm">
-                                            <small>尺寸750x750像素以上，大小2M以下 (可拖拽图片调整显示顺序 )</small>
+                                            <small>(2大块)尺寸200X340像素以上，大小1M以下;(4小块)尺寸方形图标即可;</small>
                                         </div>
                                     </div>
                                 </div>
