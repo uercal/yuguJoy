@@ -196,7 +196,7 @@
                                 <div class="widget-title am-fl">服务详情</div>
                             </div>
                             <div class="am-form-group">
-                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">服务详情 </label>
+                                <label class="am-u-sm-3 am-u-lg-2 am-form-label">服务详情 （图片建议宽度大于等于750px）</label>
                                 <div class="am-u-sm-9 am-u-end">
                                     <!-- 加载编辑器的容器 -->
                                     <textarea id="container" name="goods[content]"><?= $model['content'] ?></textarea>
