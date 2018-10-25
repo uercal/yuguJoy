@@ -40,4 +40,26 @@ class Page extends Controller
         return $this->fetch('links');
     }
 
+
+
+
+    public function data(){
+        $model = WxappPageModel::detail();        
+        if (!$this->request->isAjax()) {
+            $jsonData = json_decode($model['page_other_data'],true);
+            if(!$jsonData) $jsonData = [
+                'indicatorDots'=>'true',
+                'server_char'=>'4396'
+            ];
+            return $this->fetch('data', compact('jsonData'));
+        }
+        $data = $this->postData('other');        
+        if (!$model->editOther($data)) {
+            return $this->renderError('更新失败');
+        }
+        return $this->renderSuccess('更新成功');        
+    }
+
+
+
 }

@@ -24,4 +24,13 @@ class WxappPage extends WxappPageModel
         return $this->save(compact('page_data')) !== false;
     }
 
+    public function editOther($other){
+        $other['indicatorDots'] == "true" ? $other['indicatorDots'] = true : $other['indicatorDots'] = false;
+        $data = json_encode($other);
+        return $this->save([
+            'page_other_data'=>$data
+        ]) !==false;
+
+    }
+
 }

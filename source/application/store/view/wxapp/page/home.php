@@ -5,7 +5,7 @@
             <div class="widget am-cf">
                 <div class="widget-body am-cf">
                     <div class="widget-head am-cf">
-                        <div class="widget-title am-fl">首页设计</div>
+                        <div class="widget-title am-fl" style="display:flex;">首页设计 <p style="color:red;">(建议长宽比例2:1)</p> </div>
                     </div>
                     <!--手机diy容器-->
                     <div class="diy-phone">

@@ -227,7 +227,7 @@
         // 选择图片
         $('.upload-file').selectImages({
             name: 'goods[images][]'
-            , multiple: true
+            , multiple: false
         });
 
         // 图片列表拖动

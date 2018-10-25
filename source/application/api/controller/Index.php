@@ -22,16 +22,18 @@ class Index extends Controller
         // 页面元素
         $wxappPage = WxappPage::detail();
         $items = $wxappPage['page_data']['array']['items'];
-        // 新品推荐
+        $other = json_decode($wxappPage['page_other_data'],true);
+        $other['indicatorDots'] = $other['indicatorDots'];
+        // // 新品推荐
         $model = new GoodsModel;
-        $newest = $model->getNewList();
-        // 猜您喜欢
-        $best = $model->getBestList();
+        // $newest = $model->getNewList();
+        // // 猜您喜欢
+        // $best = $model->getBestList();
 
         // 家具服务
         $list = $model->getIndexList();        
         
-        return $this->renderSuccess(compact('items', 'list'));
+        return $this->renderSuccess(compact('items', 'list','other'));
     }
 
 }

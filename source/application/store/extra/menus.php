@@ -100,6 +100,10 @@ return [
                         'index' => 'wxapp.page/home'
                     ],
                     [
+                        'name' => '首页数据',
+                        'index' => 'wxapp.page/data'
+                    ],             
+                    [
                         'name' => '页面链接',
                         'index' => 'wxapp.page/links'
                     ],
