@@ -19,8 +19,10 @@ class User extends Controller
     public function index()
     {
         $model = new UserModel;
-        $list = $model->getList();
-        return $this->fetch('index', compact('list'));
+        $res = $model->getList();  
+        $list = $res['data'];
+        $map = $res['map'];       
+        return $this->fetch('index', compact('list','map'));
     }
 
 }

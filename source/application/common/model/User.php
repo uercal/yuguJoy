@@ -52,8 +52,18 @@ class User extends BaseModel
     public function getList()
     {
         $request = Request::instance();
-        return $this->order(['create_time' => 'desc'])
+        $map = $request->request();
+
+        $_map = [];
+        if (!empty($map['user_id'])) $_map['user_id'] = ['=',$map['user_id']];
+        if (!empty($map['phone_number'])) $_map['phone_number'] = ['like',$map['phone_number'].'%'];
+
+
+        $data = $this->where($_map)
+            ->order(['create_time' => 'desc'])
             ->paginate(15, false, ['query' => $request->request()]);
+
+        return ['data' => $data, 'map' => $map];
     }
 
     /**

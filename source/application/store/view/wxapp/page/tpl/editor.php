@@ -51,7 +51,7 @@
 <!--编辑器: banner-->
 <script id="tpl_editor_banner" type="text/template">
     <form class="am-form tpl-form-line-form" data-itemid="{{ id }}">
-        <div class="am-form-group">
+        <!-- <div class="am-form-group">
             <label class="am-u-sm-3 am-form-label am-text-xs">按钮形状 </label>
             <div class="am-u-sm-9 am-u-end">
                 <label class="am-radio-inline">
@@ -74,7 +74,7 @@
                 <input class="" type="color" name="btnColor"
                        data-bind="style.btnColor" value="{{ style.btnColor }}">
             </div>
-        </div>
+        </div> -->
         <div class="form-items">
             {{each data}}
             <div class="item" data-key="{{ $index }}">
@@ -91,8 +91,7 @@
                         <div class="input-group" style="margin-top:10px;">
                             <input type="text" name="linkUrl" data-bind="data.{{ $index }}.linkUrl"
                                    value="{{ $value.linkUrl }}"
-                                   placeholder="请输入链接地址    例：page/index/index">
-                            <!-- <span class="input-group-addon">选择链接</span> -->
+                                   placeholder="请输入链接地址    例：page/index/index">                            
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ class Index extends Controller
 
         // 家具服务
         $list = $model->getIndexList();        
-
+        
         return $this->renderSuccess(compact('items', 'list'));
     }
 

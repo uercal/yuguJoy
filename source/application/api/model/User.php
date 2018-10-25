@@ -47,22 +47,22 @@ class User extends UserModel
      * @throws \think\Exception
      * @throws \think\exception\DbException
      */
-    public function login($post,$onlyParam=false)
+    public function login($post, $onlyParam = false)
     {   
         // 微信登录 获取session_key
         $session = $this->wxlogin($post['code']);     
         // 生成token (session3rd)
         $this->token = $this->token($session['openid']);
-        if($onlyParam){
+        if ($onlyParam) {
             return $session;
-        }else{
+        } else {
             // 自动注册用户
             $userInfo = json_decode(htmlspecialchars_decode($post['user_info']), true);
-            $user_id = $this->register($session['openid'], $userInfo);
+            $user = $this->register($session['openid'], $userInfo);                        
             // 记录缓存, 7天
             Cache::set($this->token, $session, 86400 * 7);
-            return $user_id;
-        }                                        
+            return $user['user_id'];
+        }
     }
 
     /**
@@ -86,7 +86,7 @@ class User extends UserModel
         // 获取当前小程序信息
         $wxapp = Wxapp::detail();          
         // 微信登录 (获取session_key)
-        $WxUser = new WxUser($wxapp['app_id'], $wxapp['app_secret']);        
+        $WxUser = new WxUser($wxapp['app_id'], $wxapp['app_secret']);
         if (!$session = $WxUser->sessionKey($code))
             throw new BaseException(['msg' => 'session_key 获取失败']);
         return $session;
@@ -121,7 +121,19 @@ class User extends UserModel
         if (!$user->allowField(true)->save($userInfo)) {
             throw new BaseException(['msg' => '用户注册失败']);
         }
-        return $user['user_id'];
+        return $user;
+    }
+
+
+
+    /**
+     * 登陆情况下 更新手机号码
+     */
+    public function updatePhoneNumber($open_id, $phoneNumber)
+    {
+        return $this->where('open_id', '=', $open_id)->update([
+            'phone_number' => $phoneNumber
+        ]);
     }
 
 }

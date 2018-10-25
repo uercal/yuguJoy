@@ -21,14 +21,24 @@ class Index extends Controller
     public function detail()
     {
         // 当前用户信息
-        $userInfo = $this->getUser();
-        // 订单总数
-        $model = new OrderModel;
-        $orderCount = [
-            'payment' => $model->getCount($userInfo['user_id'], 'payment'),
-            'received' => $model->getCount($userInfo['user_id'], 'received'),
-        ];
-        return $this->renderSuccess(compact('userInfo', 'orderCount'));
+        $userInfo = $this->getUser();        
+        return $this->renderSuccess(compact('userInfo'));
+    }
+
+
+    /**
+     * 获取是否绑定手机
+     * 
+     */
+    public function bindPhone(){
+        // 当前用户信息
+        $userInfo = $this->getUser();        
+        if($userInfo['phone_number']==''){
+            $res = 0;
+        }else{
+            $res = 1;
+        }
+        return $this->renderSuccess(compact('res'));
     }
 
 }
