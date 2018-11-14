@@ -120,6 +120,10 @@ return [
                 ]
             ],
             [
+                'name' => '用户协议',
+                'index' => 'wxapp.agree/edit'                
+            ],
+            [
                 'name' => '导航设置',
                 'index' => 'wxapp/tabbar'
             ],

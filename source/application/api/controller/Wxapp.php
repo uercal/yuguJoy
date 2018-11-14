@@ -4,6 +4,7 @@ namespace app\api\controller;
 
 use app\api\model\Wxapp as WxappModel;
 use app\api\model\WxappHelp;
+use app\common\model\AgreeModel;
 
 /**
  * 微信小程序
@@ -36,6 +37,13 @@ class Wxapp extends Controller
         $model = new WxappHelp;
         $list = $model->getList();
         return $this->renderSuccess(compact('list'));
+    }
+
+
+    public function agree($id)
+    {
+        $detail = AgreeModel::detail($id);                
+        return $this->renderSuccess(compact('detail'));
     }
 
 }
