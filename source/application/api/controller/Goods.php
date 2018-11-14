@@ -37,13 +37,14 @@ class Goods extends Controller
     public function detail($goods_id)
     {
         // 商品详情
-        $detail = GoodsModel::detail($goods_id);
+        $detail = GoodsModel::detail($goods_id);      	
         if (!$detail || $detail['goods_status']['value'] !== 10) {
             return $this->renderError('很抱歉，商品信息不存在或已下架');
         } 
         // 规格信息
-        $specData = $detail['spec_type'] === 20 ? $detail->getManySpecData($detail['spec_rel'], $detail['spec']) : null;
-        $user = $this->getUser();                
+        $specData = $detail['spec_type'] === 20 ? $detail->getManySpecData($detail['spec_rel'], $detail['spec']) : null;      	
+        $user = $this->getUser();        
+      	
         return $this->renderSuccess(compact('detail','specData','user'));
     }
 
