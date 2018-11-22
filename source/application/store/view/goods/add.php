@@ -153,7 +153,7 @@
                                 <label class="am-u-sm-3 am-u-lg-2 am-form-label">服务详情（图片建议宽度大于等于750px） </label>
                                 <div class="am-u-sm-9 am-u-end">
                                     <!-- 加载编辑器的容器 -->
-                                    <textarea id="container" name="goods[content]" type="text/plain"><?= $model['content'] ?></textarea>
+                                    <textarea id="container" name="goods[content]" type="text/plain"></textarea>
                                 </div>
                             </div>
                             <div class="widget-head am-cf">
